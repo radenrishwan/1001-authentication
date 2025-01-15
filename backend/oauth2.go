@@ -18,6 +18,10 @@ var (
 	GOOGLE_CLIENT_ID     = flag.String("GOOGLE_CLIENT_ID", os.Getenv("GOOGLE_CLIENT_ID"), "Google Client ID")
 	GOOGLE_CLIENT_SECRET = flag.String("GOOGLE_CLIENT_SECRET", os.Getenv("GOOGLE_CLIENT_SECRET"), "Google Client Secret")
 	GOOGLE_REDIRECT_URL  = flag.String("GOOGLE_REDIRECT_URL", os.Getenv("GOOGLE_REDIRECT_URL"), "Redirect URL")
+	scopes               = []string{
+		"https://www.googleapis.com/auth/userinfo.email",
+		"https://www.googleapis.com/auth/userinfo.profile", // references: https://developers.google.com/identity/protocols/oauth2/scopes
+	}
 
 	oauthState = "random" // TODO: change later
 )
@@ -26,11 +30,8 @@ var oauthConfig = &oauth2.Config{
 	ClientID:     *GOOGLE_CLIENT_ID,
 	ClientSecret: *GOOGLE_CLIENT_SECRET,
 	RedirectURL:  *GOOGLE_REDIRECT_URL,
-	Scopes: []string{
-		"https://www.googleapis.com/auth/userinfo.email",
-		"https://www.googleapis.com/auth/userinfo.profile",
-	},
-	Endpoint: google.Endpoint,
+	Scopes:       scopes,
+	Endpoint:     google.Endpoint,
 }
 
 type GoogleUser struct {
