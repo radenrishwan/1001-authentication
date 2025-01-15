@@ -4,6 +4,7 @@ implementing authentication method without authentication libary like auth0, cle
 i made this repo only for documenting what i learn before.it will use golang for the backend, react for the web, and flutter/jetpack compose for the mobile.
 
 ## Article
+- 1001-Authentication - Introduction
 - 1001-Authentication - Implementing Basic authentication
 - 1001-Authentication - Implementing JWT authentication
 - 1001-Authentication - Implementing OAuth2 authentication with Google
