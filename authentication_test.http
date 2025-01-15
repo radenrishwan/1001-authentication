@@ -1,0 +1,29 @@
+###
+@endpoint = http://localhost:8080
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhZGVuIiwiZXhwIjoxNzM2OTk0Njc4LCJuYmYiOjE3MzY5MDgyNzgsImlhdCI6MTczNjkwODI3OH0.wodsuKCJNZ1LlirdWIxMnqTz1Fdvvt3hTxgqGvTyoTY
+
+###
+POST {{endpoint}}/api/authentication/login/basic
+Content-Type: application/json
+
+{
+    "username": "raden",
+    "password": "raden"
+}
+
+###
+GET {{endpoint}}/api/protected-data
+Authorization: Basic cmFkZW46cmFkZW4=
+
+###
+POST {{endpoint}}/api/authentication/login/jwt
+Content-Type: application/json
+
+{
+    "username": "raden",
+    "password": "raden"
+}
+
+###
+GET {{endpoint}}/api/protected-jwt-data
+Authorization: Bearer {{token}}
