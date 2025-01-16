@@ -1,6 +1,9 @@
 ###
 @endpoint = http://localhost:8080
 @token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhZGVuIiwiZXhwIjoxNzM2OTk0Njc4LCJuYmYiOjE3MzY5MDgyNzgsImlhdCI6MTczNjkwODI3OH0.wodsuKCJNZ1LlirdWIxMnqTz1Fdvvt3hTxgqGvTyoTY
+@google-oauth2-token = google-oauth2-token
+@facebook-oauth2-token = facebook-oauth2-token
+@github-oauth2-token = github-oauth2-token
 
 ###
 POST {{endpoint}}/api/authentication/login/basic
@@ -27,3 +30,15 @@ Content-Type: application/json
 ###
 GET {{endpoint}}/api/protected-jwt-data
 Authorization: Bearer {{token}}
+
+###
+GET {{endpoint}}/api/protected-google-oauth2-data
+Authorization: Bearer {{google-oauth2-token}}
+
+###
+GET {{endpoint}}/api/protected-facebook-oauth2-data
+Authorization: Bearer {{facebook-oauth2-token}}
+
+### GITHUB
+GET {{endpoint}}/api/protected-github-oauth2-data
+Authorization: Bearer {{github-oauth2-token}}
