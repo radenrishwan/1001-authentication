@@ -4,7 +4,6 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
-	"fmt"
 	"io"
 	"net/http"
 	"os"
@@ -148,12 +147,6 @@ func GoogleOauth2Middleware(next http.HandlerFunc) http.HandlerFunc {
 func (_ Oauth2AuthenticationHandler) Bind(mux *http.ServeMux) {
 	Oauth2Authentication.Init()
 
-	// print google client data
-	fmt.Println("Google Client ID: ", GOOGLE_CLIENT_ID)
-	fmt.Println("Google Client Secret: ", GOOGLE_CLIENT_SECRET)
-	fmt.Println("Google Redirect URL: ", GOOGLE_REDIRECT_URL)
-	fmt.Println("Google Scopes: ", google_scopes)
-
 	mux.HandleFunc("/api/authentication/login/google", func(w http.ResponseWriter, r *http.Request) {
 		url := googleOauthConfig.AuthCodeURL(oauthState)
 		http.Redirect(w, r, url, http.StatusTemporaryRedirect)
@@ -203,8 +196,6 @@ func (_ Oauth2AuthenticationHandler) Bind(mux *http.ServeMux) {
 
 		WriteJsonResponse(w, response)
 	})
-
-	// handle that protected data by google oauth2
 
 	mux.HandleFunc("/api/protected-google-oauth2-data", GoogleOauth2Middleware(func(w http.ResponseWriter, r *http.Request) {
 		user := r.Context().Value("user").(*GoogleUser)
