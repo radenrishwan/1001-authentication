@@ -1,0 +1,36 @@
+###
+@token=ya29.a0ARW5m76Pe5ONXtJMd4-YFOY69ci3pIKuyriRWpuacsar95_bow_AzcnLGUmH35VjfuU5I8wMAfIrNZnFS6daZllSfFMxv39F8kLky-4nSJScBbGGZSi29x8x9HRmvKc9XxTN59IsYqewqGnxcHSX8OLaw8OlXM0u89Y_aCgYKAZwSARMSFQHGX2MiNDvC5pb4sHCSmQ9ELoJ1mw0171
+@token2=ya29.a0ARW5m765PL0ieMu2AfxWFv9xmuPCT5qe_pTndkwD4EuFV8mIabjJREMNulGXGBSBdVvnpYOo0RpZvfdS-8zUFD7IZvXJEMytWejTtSe1d6eTR9nyBdonHZnoo4bJstjTq2QB3eKHP35bTOixYciKO_urPFGKVO7iMSh2SLeSaCgYKAekSARASFQHGX2MiZifouldUkp-BtGu1ooKBcg0175
+
+### HC
+GET http://localhost:8080/
+
+### CREATE NOTE
+POST http://localhost:8080/api/notes
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "title": "Note 1",
+    "content": "this is an content"
+}
+
+### GET NOTE
+GET http://localhost:8080/api/notes/ef90e934-f772-4169-a092-129e335e80ed
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "title": "Note 1",
+    "content": "Content 1"
+}
+
+### GET NOTE
+GET http://localhost:8080/api/notes?limit=50&offset=0
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+### GET NOTE WITH QUERY
+GET http://localhost:8080/api/notes?limit=00&offset=0&query=1
+Content-Type: application/json
+Authorization: Bearer {{token}}
